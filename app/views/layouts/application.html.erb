@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AngularRailsApiBoiler</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= yield %>
+  <h1>hello earth</h1>
+  
+  <% if signed_in? %>
+    <%= link_to "Sign out", api_v1_signout_path, method: "delete" %>
+  <% else %>
+    <%= link_to "Sign in", api_v1_signin_path %>
+    <%= link_to "Sign up", api_v1_signup_path %>
+  <% end %>
+</body>
+</html>

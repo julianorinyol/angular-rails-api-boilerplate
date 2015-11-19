@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_api_v1_user_path(@user) %> |
+<%= link_to 'Back', api_v1_users_path %>
