@@ -1,0 +1,74 @@
+class FemmesController < ApplicationController
+  before_action :set_femme, only: [:show, :edit, :update, :destroy]
+
+  # GET /femmes
+  # GET /femmes.json
+  def index
+    @femmes = Femme.all
+  end
+
+  # GET /femmes/1
+  # GET /femmes/1.json
+  def show
+  end
+
+  # GET /femmes/new
+  def new
+    @femme = Femme.new
+  end
+
+  # GET /femmes/1/edit
+  def edit
+  end
+
+  # POST /femmes
+  # POST /femmes.json
+  def create
+    @femme = Femme.new(femme_params)
+
+    respond_to do |format|
+      if @femme.save
+        format.html { redirect_to @femme, notice: 'Femme was successfully created.' }
+        format.json { render :show, status: :created, location: @femme }
+      else
+        format.html { render :new }
+        format.json { render json: @femme.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /femmes/1
+  # PATCH/PUT /femmes/1.json
+  def update
+    respond_to do |format|
+      if @femme.update(femme_params)
+        format.html { redirect_to @femme, notice: 'Femme was successfully updated.' }
+        format.json { render :show, status: :ok, location: @femme }
+      else
+        format.html { render :edit }
+        format.json { render json: @femme.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /femmes/1
+  # DELETE /femmes/1.json
+  def destroy
+    @femme.destroy
+    respond_to do |format|
+      format.html { redirect_to femmes_url, notice: 'Femme was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_femme
+      @femme = Femme.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def femme_params
+      params[:femme]
+    end
+end

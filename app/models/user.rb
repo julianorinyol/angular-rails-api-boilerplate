@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   validates :password, length: { minimum: 6 }
 
+  has_many :posts
+  
   has_secure_password
 
   def User.new_remember_token
@@ -19,7 +21,6 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
-  
 
   private
 

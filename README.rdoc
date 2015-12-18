@@ -1,28 +1,61 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+    1)rails new myApp -T --database=postgresql
+        -T =  skip test unit
+    2)now go remove turbolinks 
+        a)from gemfile 
+        b)application.js 
+        c)app/views/layouts/application.html.erb.
+    3)echo -e "\ngem 'factory_girl_rails'\ngem 'rspec-rails'\ngem 'pry-rails'" >> Gemfile
+    4)bundle
+    5)rails g rspec:install
+    6)touch spec/factories.rb
+    7)cp config/database.yml config/database.yml.example
+    8)echo -e "/config/database.yml" >> .gitignore
+    9)uncomment   config.force_ssl = true in  production.rb
+        a)sed -i "s/# config.force_ssl/config.force_ssl/g" ./config/environments/production.rb
+        b) check if it worked?
+    10)rails g scaffold users email:string name:string password_digest:string remember_token:string admin:boolean
+    11)uncomment bcyrpt in gemfile
+        a)sed -i "s/# gem 'bcrypt/gem 'bcrypt/g" ./Gemfile
+    12)User.rb
+    13)app/helpers/sessions_helper.rb
+    14)application_controller.rb
+        a)set action for angular
+        b) include sessions helper.rb
+    15)create nested controller folders
+    16)app/controllers/api/v1/base_controller.rb
+    17)app/controllers/api/v1/sessions_controller.rb
+    18)app/controllers/api/v1/users_controller.rb
+    19)routes.rb -> create nested routes..., set root for angular
+        a)create nested routes
+        b) set root to application#angular
+        c)create register and login routes
+    20)database setup
+        a)rake db:create
+        b)rake db:migrate
+    21)create simple view to test login
+    add bower
+        a)touch .bowerrc, paste the following inside
+            {
+              "directory":"vendor/assets/bower_components"
+            }
+        b)bower init
+        c)bower install angular angular-ui-router bootstrap --save
+        d)require angular and angular-ui-router in application.js
+            //= require angular
+            //= require angular-ui-router
+            //= require tree .
+            ??? should i delete jquery and jquery_ujs
+        e) require bootstrap in application.css
+        add *= require bootstrap/dist/css/bootstrap
+        
+        back to rails
+        
+     22)-generate a model
+        rails generate model Post title:string link:string upvotes:integer user:references
+        rails generate model Comment body:string upvotes:integer post:references
+        -rake db:migrate
+        - declare associations
+    23)-you can override as_json on the models to return custom json or also return dependents or associated objects
+    24) -add routes to create and show posts and comments
+    25) touch app/assets/javascripts/app.js    
+        

@@ -1,0 +1,25 @@
+{
+  "name": "angular-rails-api-boilerplate",
+  "homepage": "https://github.com/julianorinyol/angular-rails-api-boilerplate",
+  "authors": [
+    "Julian Orinyol <jorinyol@contractor.ea.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.6"
+  }
+}
