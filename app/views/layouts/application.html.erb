@@ -6,9 +6,12 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body ng-app="boilerApp">
-<%= yield %>
-  <h1>hello earth</h1>
+<body ng-app="boilerApp" ng-controller="MainCtrl">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <ui-view></ui-view>
+    </div>
+  </div>
   
   <% if signed_in? %>
     <%= link_to "Sign out", api_v1_signout_path, method: "delete" %>

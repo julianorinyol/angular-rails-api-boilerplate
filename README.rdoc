@@ -57,5 +57,19 @@
         - declare associations
     23)-you can override as_json on the models to return custom json or also return dependents or associated objects
     24) -add routes to create and show posts and comments
-    25) touch app/assets/javascripts/app.js    
+    25) touch app/assets/javascripts/app.js
+    26) rails g controller api/v1/Posts --skip-assets --skip-template-engine
+    	rails generate controller api/v1/Comments --skip-assets --skip-template-engine
+
+    27)
+
+    Angular
+    28)create app.js
+    29)inject 'ui.router' into the app!  make sure it's not ui-router..
+    30)add angular-rails-templates to gemfile
+        -IT SEEMS LIKE I HAVE TO DOWNGRADE SPROCKETS TO MAKE ANGULAR-RAILS-TEMPLATES work!!!! wtf!!!!!
+        -https://github.com/pitr/angular-rails-templates/issues/93 
+        - gem 'sprockets', '2.12.3'
+        -require angular-rails-templates in application.js   after angular
+
         

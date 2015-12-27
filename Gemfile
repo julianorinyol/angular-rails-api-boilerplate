@@ -30,6 +30,18 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+
+gem 'factory_girl_rails'
+gem 'rspec-rails'
+
+gem 'pry-rails'
+
+# Downgraded sprockets to make angular-rails-templates work!!!
+#https://github.com/pitr/angular-rails-templates/issues/93
+gem 'sprockets', '2.12.3'
+gem 'angular-rails-templates'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -42,7 +54,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-gem 'factory_girl_rails'
-gem 'rspec-rails'
-
-gem 'pry-rails'
