@@ -9,6 +9,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   # GET /users.json
   def index
     @users = User.all
+    render json: @users
   end
 
   # GET /users/1
@@ -30,17 +31,24 @@ class Api::V1::UsersController < Api::V1::BaseController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to api_v1_user_path @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    @user = User.new(email: params[:email], name: params[:username], password: params[:password],password_confirmation: params[:password_confirmation])
+    # @user = User.new(user_params)
+    # binding.pry
+    if @user.save
+      render json: @user
+    else
+      render json: @user.errors, status: :unprocessable_entity 
     end
+
+    # respond_to do |format|
+    #   if @user.save
+    #     # format.html { redirect_to api_v1_user_path @user, notice: 'User was successfully created.' }
+    #     format.json { render @user, status: :created, location: @user }
+    #   else
+    #     # format.html { render :new }
+    #     format.json { render json: @user.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /users/1

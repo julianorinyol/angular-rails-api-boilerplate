@@ -40,6 +40,7 @@ gem 'pry-rails'
 #https://github.com/pitr/angular-rails-templates/issues/93
 gem 'sprockets', '2.12.3'
 gem 'angular-rails-templates'
+gem 'angular_rails_csrf'
 
 
 group :development, :test do

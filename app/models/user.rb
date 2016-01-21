@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
-  before_create :create_remember_token
+  before_create :create_remember_token, :generate_api_key
 
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
@@ -26,5 +26,13 @@ class User < ActiveRecord::Base
 
     def create_remember_token
       self.remember_token = User.digest(User.new_remember_token)
+    end
+
+    def generate_api_key
+      key = SecureRandom.hex
+      while !User.where(api_key: key).empty?
+        key = SecureRandom.hex
+      end
+      self.api_key = key
     end
 end

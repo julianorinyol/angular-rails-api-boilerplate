@@ -71,5 +71,25 @@
         -https://github.com/pitr/angular-rails-templates/issues/93 
         - gem 'sprockets', '2.12.3'
         -require angular-rails-templates in application.js   after angular
+    31) add angular_rails_csrf to gemfile
+
+
+    forgotten stuff from before
+    32)add generate_api_key   method to user   
+        -call it in before_create
+    33) add in all the code in base_controller
+        -methods --> :restrict_access, :destroy_session, :api_error
+        -set them apppropriately as before_actions or whatever they should be.
+    34) add 'angular-cookies' to bower.json, require it in application.js
+    
+
+    to-do
+    -on run of angular app, hit the 'auto' endpoint 
+        -should log in
+    -Lots of API stuff missing
+        -read https://labs.kollegorna.se/blog/2015/04/build-an-api-now/
+        - CORS, so it's available everywhere
+        -request limiting with redis
+
 
         

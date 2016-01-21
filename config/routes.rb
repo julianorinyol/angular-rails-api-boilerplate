@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get '/signin' => 'sessions#new' 
       delete '/signout' => 'sessions#destroy'
       get '/signup'=> 'users#new'
+      post '/auto-login' => 'sessions#auto'
 
 
       resources :posts, only: [:create, :index, :show] do
